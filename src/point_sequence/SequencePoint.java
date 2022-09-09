@@ -13,7 +13,7 @@ public class SequencePoint {
         this.n = scanner.nextInt();
         points = new Point[n];
         for (int i = 0; i < this.points.length; i++) {
-            points[i] = new Point(new Random().nextInt(100), new Random().nextInt(100));
+            points[i] = new Point(new Random().nextInt(10), new Random().nextInt(10));
         }
     }
 
@@ -70,10 +70,61 @@ public class SequencePoint {
         System.out.println(p3);
     }
 
+    public double calAreaPolygon(){
+        double sumXY = 0;
+        double sumYX = 0;
+        for (int i = 0; i < this.points.length - 1; i++) {
+            sumXY += points[i].getX() * points[i + 1].getY();
+            sumYX += points[i].getY() * points[i + 1].getX();
+        }
+        sumXY += points[points.length - 1].getX() * points[0].getY();
+        sumYX += points[points.length - 1].getY() * points[0].getX();
+        double result = (sumYX + sumXY) / 2;
+        return result;
+    }
+
+    public Point maxPointYX(){
+        Point max = points[0];
+        for (int i = 1; i < points.length; i++){
+            if(max.getY() < points[i].getY()){
+                max = points[i];
+            }else if(max.getY() == points[i].getY() && max.getX() < points[i].getX()){
+                max = points[i];
+            }
+        }
+        return max;
+    }
+
+    public void sortPoints(){
+        for (int i = 0; i < this.points.length - 1; i++) {
+            for (int j = i + 1; j <  this.points.length; j++) {
+                if(points[i].getX() < points[j].getX() || points[i].getX() == points[j].getX() && points[i].getY() < points[j].getY()){
+                    Point temp = points[i];
+                    points[i] = points[j];
+                    points[j] = temp;
+                }
+            }
+        }
+    }
+
+    public void displayTest(){
+        Vector vector1 = new Vector(new Point(1,9), new Point(1,6));
+        Vector vector2 = new Vector(new Point(1,6), new Point(2,4));
+        Vector vector3 = new Vector(new Point(1,6), new Point(1,2));
+        System.out.println("He so goc 1: " + vector1.calAngle(vector2));
+        System.out.println("He so goc 2: " + vector1.calAngle(vector3));
+    }
+
+
     public static void main(String[] args) {
         SequencePoint sequencePoint = new SequencePoint();
+//        sequencePoint.display();
+//        sequencePoint.maxDistance();
+//        sequencePoint.maxAreaTriangle();
+//        sequencePoint.displayTest();
         sequencePoint.display();
-        sequencePoint.maxDistance();
-        sequencePoint.maxAreaTriangle();
+        sequencePoint.sortPoints();
+        System.out.println("----------------------------------- ");
+        sequencePoint.display();
     }
 }
