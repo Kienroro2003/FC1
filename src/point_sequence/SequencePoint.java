@@ -1,7 +1,6 @@
 package point_sequence;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class SequencePoint {
     private Point[] points;
@@ -71,16 +70,22 @@ public class SequencePoint {
     }
 
     public double calAreaPolygon(){
-        double sumXY = 0;
-        double sumYX = 0;
-        for (int i = 0; i < this.points.length - 1; i++) {
-            sumXY += points[i].getX() * points[i + 1].getY();
-            sumYX += points[i].getY() * points[i + 1].getX();
+        Stack<Point> pointStack = new Stack<>();
+        for(Point p : points){
+            pointStack.push(p);
         }
-        sumXY += points[points.length - 1].getX() * points[0].getY();
-        sumYX += points[points.length - 1].getY() * points[0].getX();
-        double result = (sumYX + sumXY) / 2;
-        return result;
+        this.convexHull(pointStack);
+        System.out.println(pointStack);
+        pointStack.push(pointStack.get(0));
+        System.out.println(pointStack);
+        int sumXY = 0;
+        int sumYX = 0;
+        for (int i = 0; i < pointStack.size() - 1; i++) {
+            sumXY += pointStack.get(i).getX() * pointStack.get(i+1).getY();
+            sumYX += pointStack.get(i).getY() * pointStack.get(i+1).getX();
+        }
+        double area = (sumXY - sumYX) /2f;
+        return area;
     }
 
     public Point maxPointYX(){
@@ -98,7 +103,7 @@ public class SequencePoint {
     public void sortPoints(){
         for (int i = 0; i < this.points.length - 1; i++) {
             for (int j = i + 1; j <  this.points.length; j++) {
-                if(points[i].getX() < points[j].getX() || points[i].getX() == points[j].getX() && points[i].getY() < points[j].getY()){
+                if((points[i].getX() > points[j].getX()) || (points[i].getX() == points[j].getX() && points[i].getY() > points[j].getY())){
                     Point temp = points[i];
                     points[i] = points[j];
                     points[j] = temp;
@@ -107,24 +112,70 @@ public class SequencePoint {
         }
     }
 
-    public void displayTest(){
-        Vector vector1 = new Vector(new Point(1,9), new Point(1,6));
-        Vector vector2 = new Vector(new Point(1,6), new Point(2,4));
-        Vector vector3 = new Vector(new Point(1,6), new Point(1,2));
-        System.out.println("He so goc 1: " + vector1.calAngle(vector2));
-        System.out.println("He so goc 2: " + vector1.calAngle(vector3));
+    private boolean cw (Point a, Point b, Point c) { // a -> b -> c đi theo thứ tự xuôi chiều kim đồng hồ
+        return a.getX()*(b.getY()-c.getY())+b.getX()*(c.getY()-a.getY())+c.getX()*(a.getY()-b.getY()) < 0;
+    }
+
+    private boolean ccw (Point a, Point b, Point c) { // a -> b -> c đi theo thứ tự ngược chiều kim đồng hồ
+        return a.getX()*(b.getY()-c.getY())+b.getX()*(c.getY()-a.getY())+c.getX()*(a.getY()-b.getY()) > 0;
+    }
+
+    public void convexHull(Stack<Point> pointStack) {
+        if (pointStack.size() == 1) { // chỉ có 1 điểm
+            return;
+        }
+
+        // Sắp xếp các điểm theo tọa độ x, nếu bằng nhau sắp xếp theo y
+        Collections.sort(pointStack, new Comparator<Point>() {
+            @Override
+            public int compare(Point o1, Point o2) {
+                if(o1.getX() > o2.getX() || o1.getX() == o2.getX() && o1.getY() > o2.getY()){
+                    return 1;
+                }
+                return -1;
+            }
+        });
+        System.out.println(pointStack);
+
+        Point head = pointStack.get(0),  tail = pointStack.peek();
+
+        Stack<Point> upperHull = new Stack<>();
+        Stack<Point> lowerHull = new Stack<>();
+        upperHull.push(head);
+        lowerHull.push (head);
+
+        for (int i=1; i<pointStack.size(); ++i) {
+            if (i==pointStack.size()-1 || cw (head, pointStack.get(i), tail)) {
+                while (upperHull.size()>=2 && !cw (upperHull.get(upperHull.size()-2), upperHull.get(upperHull.size()-1), pointStack.get(i)))
+                    upperHull.pop();
+                upperHull.push (pointStack.get(i));
+            }
+
+            if (i==pointStack.size()-1 || ccw (head, pointStack.get(i), tail)) {
+                while (lowerHull.size()>=2 && !ccw (lowerHull.get(lowerHull.size()-2), lowerHull.get(lowerHull.size()-1), pointStack.get(i)))
+                    lowerHull.pop();
+                lowerHull.push(pointStack.get(i));
+            }
+        }
+
+        pointStack.clear();
+        for (int i=0; i<upperHull.size(); ++i)
+            pointStack.push(upperHull.get(i));
+        for (int i=lowerHull.size()-2; i>0; --i)
+            pointStack.push(lowerHull.get(i));
     }
 
 
     public static void main(String[] args) {
         SequencePoint sequencePoint = new SequencePoint();
 //        sequencePoint.display();
-//        sequencePoint.maxDistance();
+//        sequencePoint.max()Distance();
 //        sequencePoint.maxAreaTriangle();
 //        sequencePoint.displayTest();
-        sequencePoint.display();
-        sequencePoint.sortPoints();
-        System.out.println("----------------------------------- ");
-        sequencePoint.display();
+//        sequencePoint.display();
+//        sequencePoint.sortPoints();
+//        System.out.println("----------------------------------- ");
+//        sequencePoint.display();
+        System.out.println(sequencePoint.calAreaPolygon());
     }
 }
