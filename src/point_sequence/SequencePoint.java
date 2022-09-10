@@ -177,5 +177,6 @@ public class SequencePoint {
 //        System.out.println("----------------------------------- ");
 //        sequencePoint.display();
         System.out.println(sequencePoint.calAreaPolygon());
+        System.out.println("Hello");
     }
 }
