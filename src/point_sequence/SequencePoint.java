@@ -214,5 +214,6 @@ public class SequencePoint {
 //        sequencePoint.display();
         System.out.println(sequencePoint.calAreaPolygon());
         System.out.println(sequencePoint.calAreaMin());
+        System.out.println("Hello");
     }
 }
