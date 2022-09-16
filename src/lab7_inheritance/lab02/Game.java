@@ -1,7 +1,7 @@
 package lab7_inheritance.lab02;
 
 public class Game {
-    private String description;
+    protected String description;
 
     public Game() {
     }
