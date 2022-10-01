@@ -65,6 +65,15 @@ public class Class {
     }
 
     public void sortByNameTwoFor() {
+        for (int i = 0; i < students.size(); i++) {
+            for (int j = i + 1; j < students.size(); j++) {
+                if(students.get(i).getName().equals(students.get(j).getName())){
+                    Student temp = students.get(i);
+                    students.set(i,students.get(j));
+                    students.set(j, temp);
+                }
+            }
+        }
 
     }
 
