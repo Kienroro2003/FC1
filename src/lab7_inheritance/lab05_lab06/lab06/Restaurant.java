@@ -3,9 +3,6 @@ package lab7_inheritance.lab05_lab06.lab06;
 import lab7_inheritance.lab05_lab06.Store;
 
 public class Restaurant extends Store {
-<<<<<<< HEAD
-//    private int
-=======
     private int peopleOfYear;
     private double avgPricePerson;
 
@@ -42,5 +39,4 @@ public class Restaurant extends Store {
                 ", avgPricePerson=" + avgPricePerson +
                 '}';
     }
->>>>>>> 3d64a8c4a6900a8174b3a4de892ff90cad4b5630
 }
