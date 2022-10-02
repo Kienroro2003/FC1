@@ -33,7 +33,7 @@ public class BillList {
         String idRemove = scanner.nextLine();
         for (int i = 0; i < bills.length; i++) {
             if(idRemove == bills[i].getIdCustomer()){
-                bills = IntStream.range(0, bills.length).filter(j -> j != idRemove.length()).map(j->)
+                bills = (Bill[]) IntStream.range(0, bills.length).filter(j -> j != Integer.parseInt(idRemove)).mapToObj(j-> bills[j]).toArray();
             }
         }
     }
