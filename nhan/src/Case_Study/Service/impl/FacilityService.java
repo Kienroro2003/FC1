@@ -11,25 +11,26 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class FacilityService implements IFacilityService {
-    Facility facility=new Facility();
     IFacilityRepository iFacilityRepository = new FacilityRepository();
     Scanner scanner = new Scanner(System.in);
 
     @Override
     public void addHouse() {
-        House house = this.infoHouse();
+        House house = new House();
+        house.input();
         iFacilityRepository.add(house);
     }
 
     @Override
     public void addRoom() {
-        Room room = this.infoRoom();
+        Room room = new Room();
         iFacilityRepository.add(room);
     }
 
     @Override
     public void addVilla() {
-        Villa villa = this.infoVilla();
+        Villa villa = new Villa();
+        villa.input();
         iFacilityRepository.add(villa);
     }
 
@@ -43,7 +44,6 @@ public class FacilityService implements IFacilityService {
         Map<Facility, Integer> linkedHashMap = iFacilityRepository.findAll();
         for (Map.Entry<Facility,Integer> entry: linkedHashMap.entrySet()) {
             System.out.println(entry);
-
         }
     }
 
@@ -55,58 +55,5 @@ public class FacilityService implements IFacilityService {
             linkedHashMap.computeIfPresent(Room,(k, v)->v+1);
             System.out.println(entry);
         }
-    }
-    public Room infoRoom() {
-        System.out.println("Nhap vao ten dich vu: ");
-        String serviceName = scanner.nextLine();
-        System.out.println("Nhap vao dien tich su dung: ");
-        double usableArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhap vao thue: ");
-        double rentalCost = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhap vao so nguoi toi da:");
-        int maxPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap vao kieu thue: ");
-        String rentalType = scanner.nextLine();
-        System.out.println("Nhap vao dich vu mien phi di kem: ");
-        String freeService = scanner.nextLine();
-        return new Room(serviceName, usableArea, rentalCost, maxPeople, rentalType, freeService);
-    }
-
-    public House infoHouse() {
-        System.out.println("Nhap vao ten dich vu: ");
-        String serviceName = scanner.nextLine();
-        System.out.println("Nhap vao dien tich su dung: ");
-        double usableArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhap vao thue: ");
-        double rentalCost = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhap vao so nguoi toi da:");
-        int maxPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap vao kieu thue: ");
-        String rentalType = scanner.nextLine();
-        System.out.println("Nhap vao tieu chuan phong: ");
-        String roomStandard = scanner.nextLine();
-        System.out.println("Nhap vao so tang: ");
-        int floor = Integer.parseInt(scanner.nextLine());
-        return new House(serviceName, usableArea, rentalCost, maxPeople, rentalType, roomStandard, floor);
-    }
-
-    public Villa infoVilla() {
-        System.out.println("Nhap vao ten dich vu: ");
-        String serviceName = scanner.nextLine();
-        System.out.println("Nhap vao dien tich su dung: ");
-        double usableArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhap vao thue: ");
-        double rentalCost = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhap vao so nguoi toi da:");
-        int maxPeople = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhap vao kieu thue: ");
-        String rentalType = scanner.nextLine();
-        System.out.println("Nhap vao tieu chuan phong: ");
-        String roomStandard = scanner.nextLine();
-        System.out.println("Nhap vao dien tich ho boi: ");
-        double lakeArea = Double.parseDouble(scanner.nextLine());
-        System.out.println("Nhap vao so tang: ");
-        int floor = Integer.parseInt(scanner.nextLine());
-        return new Villa(serviceName, usableArea, rentalCost, maxPeople, rentalType, roomStandard, lakeArea, floor);
     }
 }

@@ -1,5 +1,7 @@
 package Case_Study.models;
 
+import java.util.Scanner;
+
 public class House extends Facility {
     private String roomStandard;
     private int floor;
@@ -30,10 +32,25 @@ public class House extends Facility {
     }
 
     @Override
+    public void input() {
+        super.input();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhap vao tieu chuan phong: ");
+        this.roomStandard = scanner.nextLine();
+        System.out.println("Nhap vao so tang: ");
+        this.floor = Integer.parseInt(scanner.nextLine());
+    }
+
+    @Override
     public String toString() {
-        return "House{" + super.toString()+
-                ", roomStandard='" + roomStandard + '\'' +
+        return "House{" +
+                "roomStandard='" + roomStandard + '\'' +
                 ", floor=" + floor +
+                ", serviceName='" + serviceName + '\'' +
+                ", area=" + area +
+                ", rentalCost=" + rentalCost +
+                ", maxPeople=" + maxPeople +
+                ", rentalType='" + rentalType + '\'' +
                 '}';
     }
 }

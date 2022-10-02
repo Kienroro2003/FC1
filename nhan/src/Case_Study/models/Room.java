@@ -1,5 +1,7 @@
 package Case_Study.models;
 
+import java.util.Scanner;
+
 public class Room extends Facility {
     private String freeService;
 
@@ -20,9 +22,22 @@ public class Room extends Facility {
     }
 
     @Override
+    public void input() {
+        super.input();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhap vao dich vu mien phi di kem: ");
+        this.freeService = scanner.nextLine();
+    }
+
+    @Override
     public String toString() {
-        return "Room{" +super.toString()+
-                ", freeService='" + freeService + '\'' +
+        return "Room{" +
+                "freeService='" + freeService + '\'' +
+                ", serviceName='" + serviceName + '\'' +
+                ", area=" + area +
+                ", rentalCost=" + rentalCost +
+                ", maxPeople=" + maxPeople +
+                ", rentalType='" + rentalType + '\'' +
                 '}';
     }
 }

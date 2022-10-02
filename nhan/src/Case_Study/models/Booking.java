@@ -1,12 +1,13 @@
 package Case_Study.models;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 public class Booking implements Serializable,Comparable<Booking> {
     private String idBooking;//String??
-    private String dateStart;// String??
-    private String dateEnd;// String??
+    private Date dateStart;// String??
+    private Date dateEnd;// String??
     private Customer customer;
     private String serviceName;
     private String serviceType;
@@ -15,7 +16,7 @@ public class Booking implements Serializable,Comparable<Booking> {
     public Booking() {
     }
 
-    public Booking(String idBooking, String dateStart, String dateEnd, Customer customer, String serviceName, String serviceType, Facility facility) {
+    public Booking(String idBooking, Date dateStart, Date dateEnd, Customer customer, String serviceName, String serviceType, Facility facility) {
         this.idBooking = idBooking;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
@@ -33,21 +34,18 @@ public class Booking implements Serializable,Comparable<Booking> {
         this.idBooking = idBooking;
     }
 
-    public String getDateStart() {
+    public Date getDateStart() {
         return dateStart;
     }
 
-    public void setDateStart(String dateStart) {
+    public void setDateStart(Date dateStart) {
         this.dateStart = dateStart;
     }
 
-    public String getDateEnd() {
-        return dateEnd;
-    }
-
-    public void setDateEnd(String dateEnd) {
+    public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
     }
+
 
     public Customer getCustomer() {
         return customer;
@@ -87,16 +85,27 @@ public class Booking implements Serializable,Comparable<Booking> {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Booking booking = (Booking) o;
-        return Objects.equals(dateStart, booking.dateStart) && Objects.equals(dateEnd, booking.dateEnd);
+    public int hashCode() {
+        return super.hashCode();
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(dateStart, dateEnd);
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "idBooking='" + idBooking + '\'' +
+                ", dateStart=" + dateStart +
+                ", dateEnd=" + dateEnd +
+                ", customer=" + customer +
+                ", serviceName='" + serviceName + '\'' +
+                ", serviceType='" + serviceType + '\'' +
+                ", facility=" + facility +
+                '}';
     }
 }
 

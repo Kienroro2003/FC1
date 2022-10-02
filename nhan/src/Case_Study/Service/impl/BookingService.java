@@ -3,12 +3,17 @@ package Case_Study.Service.impl;
 import Case_Study.Repository.IBookingRepository;
 import Case_Study.Repository.impl.BookingRepository;
 import Case_Study.Service.IBookingService;
+import Case_Study.Service.ICustomerService;
+import Case_Study.Service.IFacilityService;
 import Case_Study.models.Booking;
+import Case_Study.models.Customer;
 
 import java.util.*;
 
 public class BookingService implements IBookingService {
     IBookingRepository iBookingRepository=new BookingRepository();
+    IFacilityService facilityService = new FacilityService();
+    ICustomerService customerService = new CustomerService();
     Scanner scanner=new Scanner(System.in);
 
     @Override
@@ -32,9 +37,10 @@ public class BookingService implements IBookingService {
         String dateStart=scanner.nextLine();
         System.out.println("Nhap vao ngay ket thuc: ");
         String dateEnd=scanner.nextLine();
-        EmployeeService employeeService = new EmployeeService();
-        employeeService.display();
-
+        System.out.println("Danh sach khach hang");
+        this.customerService.display();
+        System.out.println("Chon ma khach hang: ");
+        Customer customer = this.customerService.findById(Integer.parseInt(scanner.nextLine()));
         System.out.println("Nhap vao ten dich vu: ");
         String serviceName=scanner.nextLine();
         System.out.println("Nhap vao loai dich vu: ");
