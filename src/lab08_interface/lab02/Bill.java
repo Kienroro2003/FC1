@@ -3,7 +3,7 @@ package lab08_interface.lab02;
 import java.util.Scanner;
 
 public class Bill {
-    private String idCustomer;
+    private int idCustomer;
     private String customerType;
     private float oldWater;
     private float newWater;
@@ -11,18 +11,18 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(String idCustomer, String customerType, float oldWater, float newWater) {
+    public Bill(int idCustomer, String customerType, float oldWater, float newWater) {
         this.idCustomer = idCustomer;
         this.customerType = customerType;
         this.oldWater = oldWater;
         this.newWater = newWater;
     }
 
-    public String getIdCustomer() {
+    public int getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(String idCustomer) {
+    public void setIdCustomer(int idCustomer) {
         this.idCustomer = idCustomer;
     }
 
@@ -53,7 +53,7 @@ public class Bill {
     public void input(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter id customer: ");
-        this.idCustomer = scanner.nextLine();
+        this.idCustomer = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter customer type: ");
         this.customerType = scanner.nextLine();
         System.out.println("Enter old water: ");

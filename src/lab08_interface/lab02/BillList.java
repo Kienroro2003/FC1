@@ -2,21 +2,37 @@ package lab08_interface.lab02;
 
 import java.text.NumberFormat;
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class BillList {
-    private Bill[] bills;
+    private static Bill[] bills;
     private int n;
     Scanner scanner = new Scanner(System.in);
 
+    static {
+        bills = new Bill[5];
+        bills[0] = new Bill(1,"1",2,10);
+        bills[1] = new Bill(2,"1",2,10);
+        bills[2] = new Bill(3,"1",2,10);
+        bills[3] = new Bill(4,"1",2,10);
+        bills[4] = new Bill(5,"1",2,10);
+    }
+
     public BillList() {
-        System.out.println("Enter n: ");
-        this.n = scanner.nextInt();
-        this.bills = new Bill[n];
-        for (int i = 0; i < n; i++) {
-            bills[i] = new Bill();
-            bills[i].input();
+//        System.out.println("Enter n: ");
+//        this.n = scanner.nextInt();
+//        this.bills = new Bill[n];
+//        for (int i = 0; i < n; i++) {
+//            bills[i] = new Bill();
+//            bills[i].input();
+//        }
+    }
+
+    void display(){
+        for (int i = 0; i < bills.length; i++) {
+            System.out.println(bills[i]);
         }
     }
 
@@ -29,13 +45,21 @@ public class BillList {
     }
 
     public void remove(){
+        display();
         System.out.println("Enter id remove: ");
-        String idRemove = scanner.nextLine();
+        int idRemove = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < bills.length; i++) {
-            if(idRemove == bills[i].getIdCustomer()){
-                bills = (Bill[]) IntStream.range(0, bills.length).filter(j -> j != Integer.parseInt(idRemove)).mapToObj(j-> bills[j]).toArray();
+            if(bills[i].getIdCustomer() == idRemove){
+                Bill[] cloneBills = new Bill[bills.length - 1];
+                for (int j = 0, k = 0; j < bills.length; j++) {
+                    if(j == i)continue;
+                    cloneBills[k++] = bills[j];
+                }
+                bills = cloneBills;
             }
+            break;
         }
+        display();
     }
 
     public void maxPayment(){
@@ -46,5 +70,12 @@ public class BillList {
             }
         }
         System.out.println(result);
+    }
+
+    public static void main(String[] args) {
+        BillList billList = new BillList();
+        billList.total();
+        billList.maxPayment();
+        billList.remove();
     }
 }
