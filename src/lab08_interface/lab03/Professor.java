@@ -85,4 +85,6 @@ public class Professor extends Person {
                 ", department='" + department + '\'' +
                 '}';
     }
+
+
 }

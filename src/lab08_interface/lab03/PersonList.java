@@ -34,6 +34,18 @@ public class PersonList {
         }
         System.out.println("Average rank: "+ ((float)total / n));
     }
+
+    public void maxRank(){
+        Person max = people[0];
+        for (Person person:people){
+            if(max.rank < person.rank){
+                max= person;
+            }
+        }
+        System.out.println("Nguoi co rank cao nhat: ");
+        max.display();
+    }
+
     public void removePerson(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhap id: ");
@@ -45,12 +57,5 @@ public class PersonList {
         }
         this.people = tempPerson;
         n--;
-    }
-
-    public static void main(String[] args) {
-        PersonList personList = new PersonList();
-        personList.displayAll();
-        personList.removePerson();
-        personList.displayAll();
     }
 }

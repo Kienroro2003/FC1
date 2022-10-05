@@ -95,9 +95,10 @@ public class Student extends Person{
                 "code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", rank=" + rank +
-                ", description: "+description()+
+                ", description: " + description() +
                 ", degreeProgram='" + degreeProgram + '\'' +
                 ", yearOfGraduation=" + yearOfGraduation +
                 '}';
     }
+
 }

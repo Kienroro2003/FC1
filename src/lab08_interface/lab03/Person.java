@@ -3,18 +3,19 @@ package lab08_interface.lab03;
 
 import java.util.Scanner;
 
+
 public abstract class Person {
     protected String code;
     protected String name;
     protected int rank;
 
+    public Person() {
+    }
+
     public Person(String code, String name, int rank) {
         this.code = code;
         this.name = name;
         this.rank = rank;
-    }
-
-    protected Person() {
     }
 
     public String getCode() {
