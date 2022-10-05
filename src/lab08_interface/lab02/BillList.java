@@ -38,8 +38,13 @@ public class BillList {
 
     public void total(){
         float result = 0;
+        System.out.println("Enter type: ");
+        Scanner scanner = new Scanner(System.in);
+        String type = scanner.nextLine();
         for (int i = 0; i < this.n; i++) {
-            result += bills[i].payment();
+            if(bills[i].getCustomerType().equals(type)){
+                result += bills[i].payment();
+            }
         }
         System.out.println("Total: " + NumberFormat.getInstance().format(result));
     }
@@ -56,8 +61,8 @@ public class BillList {
                     cloneBills[k++] = bills[j];
                 }
                 bills = cloneBills;
+                break;
             }
-            break;
         }
         display();
     }
