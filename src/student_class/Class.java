@@ -94,6 +94,7 @@ public class Class {
         c.countAddressHue();
         c.superStudent();
         c.output();
+        Student student = new Student();
 
     }
 }

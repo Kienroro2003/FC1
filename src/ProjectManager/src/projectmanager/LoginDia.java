@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package projectmanager;
+package ProjectManager.src.projectmanager;
+
+import ProjectManager.src.model.UserDao;
 
 import javax.swing.JOptionPane;
-import model.UserDao;
 
 
 public class LoginDia extends javax.swing.JDialog {
@@ -41,7 +42,7 @@ public class LoginDia extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projectmanager/image_mainn.png"))); // NOI18N
+//        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("src/ProjectManager/src/image/image_mainn.png"))); // NOI18N
 
         jLabel2.setText("Username:");
 

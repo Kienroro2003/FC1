@@ -5,7 +5,7 @@ public class Student {
     private String address;
     private float average;
 
-    public Student() {
+    protected Student() {
 
     }
 

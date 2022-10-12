@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package projectmanager;
+package ProjectManager.src.projectmanager;
 
 import javax.swing.JOptionPane;
-import model.GradeDAO;
+
 
 public class MainForm extends javax.swing.JFrame {
 

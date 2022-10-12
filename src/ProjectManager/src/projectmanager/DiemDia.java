@@ -2,14 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package projectmanager;
+package ProjectManager.src.projectmanager;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Grade;
-import model.GradeDAO;
-import model.SinhVien;
-import model.SinhVienDAO;
+
+import ProjectManager.src.model.Grade;
+import ProjectManager.src.model.GradeDAO;
+import ProjectManager.src.model.SinhVien;
+import ProjectManager.src.model.SinhVienDAO;
+
+
+
 
 
 public class DiemDia extends javax.swing.JDialog {

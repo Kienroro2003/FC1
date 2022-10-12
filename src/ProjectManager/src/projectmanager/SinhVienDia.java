@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package projectmanager;
+package ProjectManager.src.projectmanager;
 
 import java.awt.Color;
 import java.awt.Image;
@@ -24,8 +24,10 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.crypto.Data;
-import model.SinhVien;
-import model.SinhVienDAO;
+
+import ProjectManager.src.model.SinhVien;
+import ProjectManager.src.model.SinhVienDAO;
+
 
 public class SinhVienDia extends javax.swing.JDialog {
 
