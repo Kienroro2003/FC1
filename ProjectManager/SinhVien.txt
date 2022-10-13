@@ -1,0 +1,6 @@
+PD06377	Tran_Nhat	a7@dtu.edu.vn	0702500091	686865051318	true	2003/12/21	Quang_Ngai	Hiep_Phu
+PD04290	Le_Tung	la@dtu.edu.vn	0982164161	3012030123123	true	2003/12/21	Hải_Phòng	Duc_lai
+PD06019	Huynh_Xuyen	xe19@dtu.edu.vn	0947030153	391133246976	true	2003/12/21	Quang_Nam	Tus_ssa
+PD05671	Nguyen_Ngan	ng1@dtu.edu.vn	0774501370	39069522952	false	2003/12/21	Quang_Ngai	Duc_lx
+PD05863	Nguyen_Tram	tr3@dtu.edu.vn	0973010524	937738264861	true	2003/12/21	Quang_Tri	s_ass
+PD06106	Nguyen_Duc	d6@dtu.edu.vn	0935136702	869392933427	false	2003/06/17	Quang_Binh	R_sa
