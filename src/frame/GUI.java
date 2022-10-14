@@ -14,7 +14,7 @@ public class GUI extends JFrame {
         addEventsWindow();
         addEventsMouse();
         addEventsKey();
-//        addComponents();
+        addComponents();
     }
 
     private void addComponents(){
