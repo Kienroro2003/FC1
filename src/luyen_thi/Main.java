@@ -15,5 +15,6 @@ public class Main {
         String nameRemove = scanner.nextLine();
         listShape.removeShapeByName(nameRemove);
         listShape.display();
+        int main = 10;
     }
 }
