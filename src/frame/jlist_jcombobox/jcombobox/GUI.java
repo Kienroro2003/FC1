@@ -1,4 +1,4 @@
-package frame.jlist_jcombobox;
+package frame.jlist_jcombobox.jcombobox;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,7 @@ public class GUI extends JFrame {
     }
 
     private void init() {
-        setTitle("JList");
+        setTitle("Combobox");
         setSize(500, 250);
         getContentPane().setBackground(Color.BLUE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

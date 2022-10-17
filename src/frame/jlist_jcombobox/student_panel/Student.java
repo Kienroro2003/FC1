@@ -1,4 +1,4 @@
-package frame.jlist_jcombobox;
+package frame.jlist_jcombobox.student_panel;
 
 public class Student {
     private String name;
