@@ -19,6 +19,7 @@ public class TextAreaPanel extends JPanel {
 
     private void addComps() {
         textArea = new JTextArea();
+        textArea.requestFocus();
         textArea.setBackground(Color.BLUE);
         textArea.setText("Hello world");
         textArea.setWrapStyleWord(true);
